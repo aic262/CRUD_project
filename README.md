@@ -1,6 +1,8 @@
-# Name of Your App
+# AIC_262_Rocks
 
 Some description or other info about what the app does.
+The AIC_262_Rocks is an app that allows you to list, write, show, update and delete files without you opening them or deleting them.
+
 
 ## Installation
 
