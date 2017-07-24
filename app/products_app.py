@@ -1,8 +1,5 @@
 import csv
 
-#
-#Checkpoint 2
-#
 
 ##reading
 
@@ -20,9 +17,6 @@ print(len(products))
 
 
 
-#
-#Checkpoint 1
-#
 
 menu = """
 
@@ -46,7 +40,9 @@ chosen_operation = chosen_operation.title()
 def list_products():
     print("LISTING PRODUCTS")
     for product in products:
-        print(" + Product #" + str(product["id"]) + ": " + product["name"])
+        price_usd = '(${0:.2f})'.format(float(product["price"]))
+        print(" + Product #" + str(product["id"]) + ": " + product["name"] + ", " + product["aisle"] + ", " + product["department"] + ", " + price_usd)
+
 
 
 def show_product():
@@ -54,7 +50,8 @@ def show_product():
     product_id = input("OK. WHAT IS THE PRODUCT'S ID? ")
     product = [p for p in products if p["id"] == product_id][0]
     if product:
-        print("READING PRODUCT HERE:", " + #" + str(product["id"]) + ": " + product["name"] +  ", " + product["aisle"] +  ", " + product["department"] +  ", " + product["price"])
+        price_usd = '(${0:.2f})'.format(float(product["price"]))
+        print("READING PRODUCT HERE:", " + #" + str(product["id"]) + ": " + product["name"] +  ", " + product["aisle"] +  ", " + product["department"] +  ", " + price_usd)
     else:
         print("COULDN'T FIND A PRODUCT WITH IDENTIFIER", product)
 
@@ -74,7 +71,7 @@ def create_product():
         "department": product_department,
         "price": product_price
     }
-    print("NEW PRODUCT IS", new_product)
+    print("NEW PRODUCT IS: ", new_product)
     products.append(new_product)
 
 
@@ -126,7 +123,7 @@ else: print("OOPS. PLEASE CHOOSE ONE OF THE RECOGNIZED OPERATIONS.")
 #    f.write(contents)
 
 
-other_path = "data\other_products.csv"
+other_path = "data\products.csv"
 with open(other_path, "w", newline="") as csv_file:
     writer = csv.DictWriter(csv_file, fieldnames=["id","name","aisle","department","price"])
     writer.writeheader()
